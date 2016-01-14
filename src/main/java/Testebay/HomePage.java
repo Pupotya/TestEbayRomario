@@ -13,22 +13,22 @@ public class HomePage {
     private final By searchField = By.id("gh-ac");
     private final By searchButton = By.id("gh-btn");
 
-    public HomePage enterSearchText(String text){
+    public HomePage enterSearchText(String text) {
         driver.findElement(searchField).sendKeys(text);
         return this;
     }
 
-    public HomePage clickSearchButton(){
+    public HomePage clickSearchButton() {
         driver.findElement(searchButton).click();
         return this;
     }
 
-    public HomePage openHomePage(){
+    public HomePage openHomePage() {
         driver.get("http://www.ebay.com");
         return this;
     }
 
-    public HomePage(WebDriver driver){
+    public HomePage(WebDriver driver) {
         this.driver = driver;
     }
 

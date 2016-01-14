@@ -7,18 +7,22 @@ package Testebay;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class MyTestEbay {
     private FirefoxDriver driver;
     private HomePage homePage;
+    private SearchResultPage searchResultPage;
+    private ProductDetailPage productDetailPage;
+    private LoginPage loginPage;
 
     @Before
     public void precondition() {
         driver = new FirefoxDriver();
         homePage = new HomePage(driver);
+        searchResultPage = new SearchResultPage(driver);
+        productDetailPage = new ProductDetailPage(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @Test
@@ -26,12 +30,10 @@ public class MyTestEbay {
         homePage.openHomePage()
                 .enterSearchText("lightsaber")
                 .clickSearchButton();
-        searchResultPage.
-
-        driver.findElement(By.cssSelector("[title=\"Buy It Now\"]")).click();
-        driver.findElement(By.cssSelector("#item33af100a32>h3>a.vip")).click();
-        driver.findElement(By.cssSelector("#binBtn_btn")).click();
-        Assert.assertTrue(driver.findElement(By.id("sgnBt")).isDisplayed());
+        searchResultPage.switchToBuyItNow()
+                .openSomeItem();
+        productDetailPage.switchDatItem();
+        loginPage.areUseeIt();
     }
 
     @After
